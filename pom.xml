@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>movie-mangement</artifactId>
+	<artifactId>movie-management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>movie-mangement</name>
+	<name>movie-management</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -60,8 +60,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>me.paulschwarz</groupId>
+			<artifactId>spring-dotenv</artifactId>
+			<version>4.0.0</version>
+		</dependency>
 	</dependencies>
-
+		
 	<build>
 		<plugins>
 			<plugin>

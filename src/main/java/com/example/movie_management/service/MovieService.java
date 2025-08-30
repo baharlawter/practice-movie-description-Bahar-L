@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.apache.http.HttpException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.example.movie_management.model.Movie;
@@ -17,9 +18,11 @@ public class MovieService {
     private final MovieRepository repo;
     private final Client geminiClient;
 
-    public MovieService(MovieRepository repo) {
+
+    public MovieService(MovieRepository repo, @Value("${google.api.key}") String apiKey) {
         this.repo = repo;
-        this.geminiClient = new Client();  // picks up API key from env
+        System.setProperty("GOOGLE_API_KEY", apiKey);
+        this.geminiClient = new Client();
     }
 
     public Movie addMovie(String title, int rating) throws HttpException, IOException {
