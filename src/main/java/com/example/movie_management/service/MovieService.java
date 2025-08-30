@@ -12,18 +12,29 @@ import com.example.movie_management.repository.MovieRepository;
 import com.google.genai.Client;
 import com.google.genai.types.GenerateContentResponse;
 
+import jakarta.annotation.PostConstruct;
+
 @Service
 public class MovieService {
 
     private final MovieRepository repo;
-    private final Client geminiClient;
+    private Client geminiClient;
+    private final String apiKey;
 
 
-    public MovieService(MovieRepository repo, @Value("${google.api.key}") String apiKey) {
+     public MovieService(MovieRepository repo, @Value("${google.api.key}") String apiKey) {
         this.repo = repo;
+        this.apiKey = apiKey;
+        System.out.println("API Key: " + apiKey); // Debugging line
+    }
+
+    @PostConstruct
+    private void initializeClient() {
         System.setProperty("GOOGLE_API_KEY", apiKey);
+        System.out.println("GOOGLE_API_KEY: " + System.getProperty("GOOGLE_API_KEY")); // Check the value
         this.geminiClient = new Client();
     }
+    
 
     public Movie addMovie(String title, int rating) throws HttpException, IOException {
         // 1. Build the prompt
