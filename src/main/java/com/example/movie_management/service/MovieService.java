@@ -1,14 +1,15 @@
-package service;
-
-import com.google.genai.Client;
-import com.google.genai.types.GenerateContentResponse;
-import model.Movie;
-import org.apache.http.HttpException;
-import repo.repository.MovieRepository;
-import org.springframework.stereotype.Service;
+package com.example.movie_management.service;
 
 import java.io.IOException;
 import java.util.List;
+
+import org.apache.http.HttpException;
+import org.springframework.stereotype.Service;
+
+import com.example.movie_management.model.Movie;
+import com.example.movie_management.repository.MovieRepository;
+import com.google.genai.Client;
+import com.google.genai.types.GenerateContentResponse;
 
 @Service
 public class MovieService {

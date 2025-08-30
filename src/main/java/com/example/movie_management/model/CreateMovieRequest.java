@@ -1,4 +1,4 @@
-package controller.dto.CreateMovieRequest;
+package com.example.movie_management.model;
 
 
 
